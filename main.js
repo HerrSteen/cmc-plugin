@@ -7,9 +7,28 @@ setTimeout(() => {
 
 let requestedAction = ""
 
-console.log("hello")
-
 console.log("plugin started")
+
+function sendOrderAndClose(tryCount) {
+  try {
+    document.querySelector(".feature-controller-div.aw12 .action-button.submit-button").click()
+    console.log("action-button är klickad")
+    // document.querySelector(".feature-controller-div.aw12 .action-button.close-button").click()
+
+    setTimeout(() => {
+      console.log("stänger close-button")
+      document.querySelector(".feature-controller-div.aw12 .action-button.close-button").click()
+    }, 500)
+
+  } catch(e) {
+    console.log("kunde inte klicka på action-knapp", e)
+    if (tryCount <= 4) {
+      setTimeout(() => {
+        sendOrderAndClose(tryCount + 1)
+      }, 500)
+    }
+  }
+}
 
 document.addEventListener("keydown", (e) => {
   const actionLine = document.getElementsByClassName("action-line")[0]
@@ -42,34 +61,14 @@ document.addEventListener("keydown", (e) => {
       console.log("buy", buyButton)
       buyButton.click()
 
-      try {
-        setTimeout(() => document.querySelector(".feature-controller-div.aw12 .action-button.submit-button").click(), 1500)
-      } catch(e) {
-        console.log("kunde inte klicka på action-knapp", e)
-      }
-
-      try {
-        setTimeout(() => document.querySelector(".feature-controller-div.aw12 .action-button.close-button").click(), 2500)
-      } catch(e) {
-        console.log("kunde inte klicka på stäng-knapp", e)
-      }
+      setTimeout(() => sendOrderAndClose(1), 1000)
     }
 
     if (requestedAction === "sell") {
       console.log("sell", sellButton)
       sellButton.click()
 
-      try {
-        setTimeout(() => document.querySelector(".feature-controller-div.aw12 .action-button.submit-button").click(), 1500)
-      } catch(e) {
-        console.log("kunde inte klicka på action-knapp", e)
-      }
-
-      try {
-        setTimeout(() => document.querySelector(".feature-controller-div.aw12 .action-button.close-button").click(), 2500)
-      } catch(e) {
-        console.log("kunde inte klicka på stäng-knapp", e)
-      }
+      setTimeout(() => sendOrderAndClose(1), 1000)
     }
   }
 

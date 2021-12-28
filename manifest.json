@@ -8,7 +8,7 @@
       "matches": [
         "https://platform.cmcmarkets.com/*",
         "https://platform.cmcmarkets.com/#/app",
-        "http://hectors.herokuapp.com/*"
+        "https://hectors.herokuapp.com/*"
       ],
       "css": ["main.css"],
       "js": ["main.js"]
