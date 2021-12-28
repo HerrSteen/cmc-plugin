@@ -5,7 +5,11 @@
   "manifest_version": 3,
   "content_scripts": [
     {
-      "matches": ["http://hectors.herokuapp.com/*"],
+      "matches": [
+        "https://platform.cmcmarkets.com/*",
+        "https://platform.cmcmarkets.com/#/app",
+        "http://hectors.herokuapp.com/*"
+      ],
       "css": ["main.css"],
       "js": ["main.js"]
     }
