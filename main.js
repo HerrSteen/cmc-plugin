@@ -12,11 +12,8 @@ console.log("plugin started")
 function sendOrderAndClose(tryCount) {
   try {
     document.querySelector(".feature-controller-div.aw12 .action-button.submit-button").click()
-    console.log("action-button är klickad")
-    // document.querySelector(".feature-controller-div.aw12 .action-button.close-button").click()
 
     setTimeout(() => {
-      console.log("stänger close-button")
       document.querySelector(".feature-controller-div.aw12 .action-button.close-button").click()
     }, 500)
 
@@ -33,7 +30,6 @@ function sendOrderAndClose(tryCount) {
 document.addEventListener("keydown", (e) => {
   const actionLine = document.getElementsByClassName("action-line")[0]
   if(!actionLine) return
-  console.log("key pressed")
 
   if (e.code === "ArrowLeft") {
     e.preventDefault()
@@ -58,16 +54,12 @@ document.addEventListener("keydown", (e) => {
     const { sellButton, buyButton } = getBuyAndSellButton(row)
 
     if (requestedAction === "buy") {
-      console.log("buy", buyButton)
       buyButton.click()
-
       setTimeout(() => sendOrderAndClose(1), 1000)
     }
 
     if (requestedAction === "sell") {
-      console.log("sell", sellButton)
       sellButton.click()
-
       setTimeout(() => sendOrderAndClose(1), 1000)
     }
   }
@@ -93,7 +85,6 @@ function getInstrumentNameFromKeyCode(code) {
 }
 
 function getBuyAndSellButton(tile) {
-  console.log("getBuyAndSellButton", tile)
   const sellButton = tile.querySelector(".price-box.sell")
   const buyButton = tile.querySelector(".price-box.buy")
 
